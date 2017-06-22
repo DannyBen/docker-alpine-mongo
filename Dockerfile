@@ -1,10 +1,10 @@
 FROM alpine:edge
 
-ENV BUILD_PACKAGES bash mongodb
+ENV PACKAGES bash mongodb
 ENV TERM=linux
 
 RUN apk update && apk upgrade && \
-    apk add $BUILD_PACKAGES --no-cache && \
+    apk add $PACKAGES --no-cache && \
     rm -rf /var/cache/apk/*
 
 RUN mkdir -p /data/db && \
