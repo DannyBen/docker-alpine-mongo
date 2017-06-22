@@ -10,7 +10,7 @@ action :build do
 end
 
 action :bash do
-  run! "docker run -it #{image_name} bash"
+  run! "docker run -it --entrypoint /bin/bash #{image_name}"
 end
 
 action :mongo do
