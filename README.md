@@ -12,5 +12,7 @@ $ docker run -v ~/my_mongo_data:/data/db -it -p 27017:27017 dannyben/alpine-mong
 ```
 
 [View on Docker Hub][1]
+[View on GitHub][2]
 
 [1]: https://hub.docker.com/r/dannyben/alpine-mongo/
+[2]: https://github.com/DannyBen/docker-alpine-mongo
