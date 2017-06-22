@@ -1,16 +1,10 @@
-Docker Alpine Ruby Image
+Docker Alpine MongoDB Image
 ==================================================
 
-
-This is the smallest possible Ruby docker image, with ability to 
-build native extension gems.
+Alpine Linux with MongoDB.
 
 ```
-# Start IRB
-$ docker run -it --rm dannyben/alpine-ruby
-
-# Show gem environment
-$ docker run --rm dannyben/alpine-ruby gem env
+$ docker run -it -p 27017:27017 dannyben/alpine-mongo
 ```
 
 [View on Docker Hub][1]
