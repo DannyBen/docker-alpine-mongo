@@ -1,23 +1,34 @@
 title   "Docker Utilities"
-summary "Utilities for building the docker image"
-version "0.0.1"
+summary "Utilities for building this docker image"
+version "0.0.2"
 
 image_name = 'dannyben/alpine-mongo'
 
-help   "Build the docker image"
+help   "Build the docker image."
 action :build do
   run! "docker build -t #{image_name} ."
 end
 
-action :bash do
-  run! "docker run -it --entrypoint /bin/bash #{image_name}"
-end
-
-action :mongo do
-  run! "docker run -it -p 27017:27017 #{image_name}"
-end
-
+help   "Push the image to Docker Hub."
 action :push do
   run! "docker push #{image_name}"
 end
 
+help   "Run bash in the docker."
+action :bash do
+  run! "docker run -it #{image_name} bash"
+end
+
+help   "Run the mongo server."
+usage  "server [--mount DIR]"
+option "--mount DIR", "Mount the data folder to DIR. Should be an absolute path."
+example "server --mount ~/mymongo"
+action :server do |args|
+  mount = args['--mount'] ? "-v ~/#{args['--mount']}:/data/db" : ""
+  run! "docker run #{mount} --rm -it --name mongodb -p 27017:27017 #{image_name}"
+end
+
+help   "Run the mongo client in a separate container and connect to the server container."
+action :client do
+  run! "docker run -it --rm --link mongodb:mongodb #{image_name} bash -c 'mongo $MONGODB_PORT_27017_TCP_ADDR:$MONGODB_PORT_27017_TCP_PORT'"
+end
