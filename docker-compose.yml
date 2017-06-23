@@ -1,0 +1,17 @@
+version: '2'
+services:
+
+  mongodb:  
+    build: .
+    image: dannyben/alpine-mongo
+    ports: ["27017:27017"]
+
+  client:  
+    image: dannyben/alpine-mongo
+    command: mongo mongodb:27017
+    links: [mongodb]
+
+  bash:  
+    image: dannyben/alpine-mongo
+    command: bash
+

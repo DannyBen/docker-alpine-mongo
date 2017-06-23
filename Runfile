@@ -30,5 +30,5 @@ end
 
 help   "Run the mongo client in a separate container and connect to the server container."
 action :client do
-  run! "docker run -it --rm --link mongodb:mongodb #{image_name} bash -c 'mongo $MONGODB_PORT_27017_TCP_ADDR:$MONGODB_PORT_27017_TCP_PORT'"
+  run! "docker run -it --rm --link mongodb:mongodb #{image_name} mongo mongodb:27017"
 end

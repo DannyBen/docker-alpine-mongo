@@ -19,6 +19,13 @@ $ gem install runfile
 $ run --help
 ```
 
+Or, the provided `docker-compose` configuration:
+
+```
+$ docker-compose run client
+```
+
+
 - [View on Docker Hub][1]
 - [View on GitHub][2]
 
