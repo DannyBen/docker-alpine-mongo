@@ -22,6 +22,7 @@ $ run --help
 Or, the provided `docker-compose` configuration:
 
 ```
+$ docker-compose up -d mongodb
 $ docker-compose run client
 ```
 
