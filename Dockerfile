@@ -1,15 +1,13 @@
-FROM alpine:edge
+FROM alpine
 
-ENV PACKAGES bash mongodb
 ENV TERM=linux
 
-RUN apk update && apk upgrade && \
-    apk add $PACKAGES --no-cache && \
-    rm -rf /var/cache/apk/*
+RUN apk add --no-cache bash mongodb
 
 RUN mkdir -p /data/db && \
     chown -R mongodb /data/db
 
-EXPOSE 27017
+VOLUME /data/db
+EXPOSE 27017 28017
 
-CMD mongod
+CMD [ "mongod", "--bind_ip", "0.0.0.0" ]
