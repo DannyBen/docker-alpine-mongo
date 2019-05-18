@@ -11,15 +11,7 @@ $ docker run -it -p 27017:27017 dannyben/alpine-mongo
 $ docker run -v ~/my_mongo_data:/data/db -it -p 27017:27017 dannyben/alpine-mongo
 ```
 
-If you are using the source repository, you can use the provided Runfile for 
-some additional convenience commands.
-
-```
-$ gem install runfile
-$ run --help
-```
-
-Or, the provided `docker-compose` configuration:
+With the provided `docker-compose` file, you can also run:
 
 ```
 $ docker-compose up -d mongodb
